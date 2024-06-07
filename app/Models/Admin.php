@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-class Admin extends User
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Applicant extends User
 {
-    protected $table = 'users';
+    use HasFactory;
 
     protected static function boot()
     {
         parent::boot();
 
-        static::addGlobalScope('admin', function (Builder $builder) {
-            $builder->where('type', 'admin');
+        static::addGlobalScope('applicant', function (Builder $builder) {
+            $builder->where('type', 'applicant');
         });
     }
 }
